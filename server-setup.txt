@@ -1,0 +1,7 @@
+#Database Setup
+Database Identifier - Arogyam Ayush
+database name - arogyamAyush
+username - arogyamAdmin
+password - arogyam123Ayush
+
+KMS Key - d5c12ee9-76dc-4b9a-a1b8-05f17b67e536
