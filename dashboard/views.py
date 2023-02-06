@@ -77,8 +77,8 @@ def home(request):
     for i in dealer:
         revenue = revenue + int(i.product.price)
     
-    netBalance = (float(revenue)) - (float(paidBalance['paidBalance__sum']) + float(pendingBalance['walletBalance__sum']))
-
+    # netBalance = (float(revenue)) - (float(paidBalance['paidBalance__sum']) + float(pendingBalance['walletBalance__sum']))
+    netBalance = 0
 
     # Graph Inputs 
     today = datetime.datetime.now()

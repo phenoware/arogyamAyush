@@ -55,7 +55,7 @@ class Dealer(models.Model):
     remark = models.CharField(max_length=200, default="")
 
     def ___str___(self): 
-            return self.id
+            return self.phone
 
 class Distributor(models.Model):
     id = models.AutoField(primary_key=True)
