@@ -1,0 +1,369 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'website/assets/img/logo/favicon.png' %}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'website/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/assets/css/animate.css' %}">
+
+
+    <!-- <link rel="stylesheet" href="{% static 'website/assets/css/swiper-bundle.css' %}"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="{% static 'website/assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'website/assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'website/assets/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'website/assets/css/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'website/assets/css/spacing.css' %}">
+    <link rel="stylesheet" href="{% static 'website/assets/css/main.css' %}">
+
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+
+    <!-- preloader -->
+    <div id="preloader">
+        <div class="preloader">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!-- preloader end  -->
+
+    <!-- Scroll-top -->
+    <button class="scroll-top scroll-to-target" data-target="html">
+        <i class="fas fa-angle-up"></i>
+    </button>
+    <!-- Scroll-top-end-->
+
+    <!-- header-area-start -->
+    <header>
+        <div class="header-top space-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="header-welcome-text text-start ">
+                            <span>Welcome to india's fastest growing ayurvedic products brand shop !</span>
+                            <a href="/shop">Shop Now <i class="fal fa-long-arrow-right"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="logo-area mt-30 d-none d-xl-block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-2 col-lg-3">
+                        <div class="logo">
+                            <a href="/"><img src="{% static 'website/assets/img/logo/logo.png' %}" style="width: 100%;" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-10 col-lg-9">
+                        <div class="header-meta-info d-flex align-items-center justify-content-between">
+                            <div class="header-search-bar">
+                                <form action="#">
+                                    <div class="search-info p-relative">
+                                        <button class="header-search-icon"><i class="fal fa-search"></i></button>
+                                        <input type="text" placeholder="Search products...">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="header-meta header-language d-flex align-items-center">
+                                <div class="header-meta__social d-flex align-items-center ml-25">
+
+                                    <a href="/shop"><i class="fal fa-shopping-cart"></i></a>
+                                    <a href="/partner/member-login/" target="_blank"><i class="fal fa-user"></i></a>
+                                    <a href="/partner/member-register/" target="_blank"><i class="fal fa-share"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-menu-area mt-20 d-none d-xl-block">
+            <div class="for-megamenu p-relative">
+                <div class="container">
+                    <div class="row align-items-center">
+
+
+                        <div class="col-xl-9 col-lg-6">
+                            <div class="main-menu">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="/shop">Shop</a></li>
+                                        <li><a href="/about-us">About Arogyam Ayush</a></li>
+                                        <li><a href="/contact">Contacts</a></li>
+                                        <li><a href="/partner/member-register/">Be a Partner </a></li>
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3">
+                            <div class="menu-contact">
+                                <ul>
+                                    <li>
+                                        <div class="menu-contact__item">
+                                            <div class="menu-contact__icon">
+                                                <i class="fal fa-phone"></i>
+                                            </div>
+                                            <div class="menu-contact__info">
+                                                <a href="tel:917304022648">91 7304022648</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="menu-contact__item">
+                                            <div class="menu-contact__icon">
+                                                <i class="fal fa-map-marker-alt"></i>
+                                            </div>
+                                            <div class="menu-contact__info">
+                                                <a href="/contact">Find Store</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header-area-end -->
+
+
+
+    <div id="header-mob-sticky" class="tp-md-lg-header d-md-none pt-20 pb-20">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-3 d-flex align-items-center">
+                    <div class="header-canvas flex-auto">
+                        <button class="tp-menu-toggle"><i class="far fa-bars"></i></button>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="logo text-center">
+                        <a href="/"><img src="{% static 'website/assets/img/logo/logo.png' %}" alt="logo" style="width: 100%;"></a>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="header-meta-info d-flex align-items-center justify-content-end ml-25">
+                        <div class="header-meta m-0 d-flex align-items-center">
+                            <div class="header-meta__social d-flex align-items-center">
+                                <a href="/shop"><i class="fal fa-shopping-cart"></i></a>
+                                <a href="/partner/member-login/" target="_blank"><i class="fal fa-user"></i></a>
+                                <a href="/partner/member-register/" target="_blank"><i class="fal fa-share"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header-md-lg-area -->
+
+    <!-- sidebar-menu-area -->
+    <div class="tpsideinfo">
+        <button class="tpsideinfo__close">Close<i class="fal fa-times ml-10"></i></button>
+
+        <div class="tpsideinfo__nabtab">
+
+            <div class="tab-content pt-50">
+                <div class="tpsidebar-categories">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/about-us">About Arogyam Ayush</a></li>
+                        <li><a href="/contact">Contacts</a></li>
+                        <li><a href="/partner/member-register/">Be a Partner </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="body-overlay"></div>
+    <!-- sidebar-menu-area-end -->
+
+    
+    {% block body %}
+
+    {% endblock %}
+    <!-- footer-area-start -->
+    <footer>
+        <div class="footer-area theme-bg pt-65">
+            <div class="container">
+                <div class="main-footer pb-15 mb-30">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="footer-widget footer-col-1 mb-40">
+                                <div class="footer-logo mb-30">
+                                    <a href="/"><img src="{% static 'website/assets/img/logo/logo.png' %}" style="width: 250px;"
+                                            alt="logo"></a>
+                                </div>
+                                <div class="footer-content">
+                                    <p>Arogyam Ayush as the name implies, believes in providing a long and healthy life to everyone, irrespective of their caste, creed and economic status. During these 3 decades of experience and expertise of our pioneers, we are now committed to take this noble endeavour to newer heights. 
+                                        <a href="/about-us" style="color: red;">Know more ..</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="footer-widget footer-col-2 ml-30 mb-40">
+                                <h4 class="footer-widget__title mb-30">Information</h4>
+                                <div class="footer-widget__links">
+                                    <ul>
+                                        <li><a href="/shop">Shop</a></li>
+                                        <li><a href="/about-us">About Arogyam Ayush</a></li>
+                                        <li><a href="/contact">Contacts</a></li>
+                                        <li><a href="/partner/member-register/">Be A Partner</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="footer-widget footer-col-3 mb-40">
+                                <h4 class="footer-widget__title mb-30">Important links</h4>
+                                <div class="footer-widget__links">
+                                    <ul>
+                                        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                                        <li><a href="/term-of-services/">Terms & Condition</a></li>
+                                        <li><a href="/refund-policy/">Refund Policy</a></li>
+                                        <!-- <li><a href="#">Discount</a></li>
+                                        <li><a href="#">Custom Service</a></li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="footer-widget footer-col-4 mb-40">
+                                <h4 class="footer-widget__title mb-30">Social Network</h4>
+                                <div class="footer-widget__links">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i>Facebook</a></li>
+                                        <li><a href="#"><i class="fab fa-instagram"></i>Instagram</a></li>
+                                        <!-- <li><a href="#"><i class="fab fa-twitter"></i>Twitter</a></li>
+                                        <li><a href="#"><i class="fab fa-behance"></i>Behance</a></li> -->
+                                        <li><a href="#"><i class="fab fa-youtube"></i>Youtube</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                            <div class="footer-widget footer-col-5 mb-40">
+                                <h4 class="footer-widget__title mb-30">Get Newsletter</h4>
+                                <p>Get latest offers and product information !</p>
+                                {% if messages %}
+                                {% for i in messages %}
+                                <p style="color: rgb(40, 130, 19);">{{i}}</p>
+                                {% endfor %}
+                                {% endif %}
+                                <div class="footer-widget__newsletter">
+                                    <form action="/subsribe/?redirectUrl={{request.get_full_path}}" method="post">
+                                        {% csrf_token %}
+                                        <input type="email" placeholder="Enter email address" class="form-control" required name="email">
+                                        <button class="btn btn-danger ms-2 " type="submit"> Subscribe Now <i
+                                                class="fal fa-long-arrow-right ms-1"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-cta pb-20">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6">
+                            <div class="footer-cta__contact">
+                                <div class="footer-cta__icon">
+                                    <i class="far fa-phone"></i>
+                                </div>
+                                <div class="footer-cta__text">
+                                    <a href="tel:917304022648">+91 7304022648</a>
+                                    <span>Working 8:00 AM- 7:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-xl-6 col-lg-8 col-md-8 col-sm-6">
+                            <div class="footer-cta__source">
+                                <div class="footer-cta__source-content">
+                                    <h4 class="footer-cta__source-title">Download App on Mobile</h4>
+                                    <p>15% discount on your first purchase</p>
+                                </div>
+                                <div class="footer-cta__source-thumb">
+                                    <a href="#"><img src="assets/img/footer/f-google.jpg" alt="google"></a>
+                                    <a href="#"><img src="assets/img/footer/f-app.jpg" alt="app"></a>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright footer-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-7 col-md-5 col-sm-12">
+                            <div class="footer-copyright__content">
+                                <span>Copyright 2022 <a href="/">©Arogyam Ayush</a>. All rights reserved. Developed by
+                                    <a href="https://www.phenoware.in/">Phenoware Pvt Ltd</a>.</span>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-5 col-md-7 col-sm-12">
+                            <div class="footer-copyright__brand">
+                                <img src="{% static 'website/assets/img/footer/pagos_1.png' %}"
+                                    alt="footer-brand" style="width: 200px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer-area-end -->
+
+
+
+    <!-- JS here -->
+    <script src="{% static 'website/assets/js/jquery.js' %}"></script>
+    <script src="{% static 'website/assets/js/waypoints.js' %}"></script>
+    <script src="{% static 'website/assets/js/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <!-- <script src="{% static 'website/assets/js/swiper-bundle.js' %}"></script> -->
+    <script src="{% static 'website/assets/js/slick.js' %}"></script>
+    <script src="{% static 'website/assets/js/magnific-popup.js' %}"></script>
+    <script src="{% static 'website/assets/js/nice-select.js' %}"></script>
+    <script src="{% static 'website/assets/js/counterup.js' %}"></script>
+    <script src="{% static 'website/assets/js/wow.js' %}"></script>
+    <script src="{% static 'website/assets/js/isotope-pkgd.js' %}"></script>
+    <script src="{% static 'website/assets/js/imagesloaded-pkgd.js' %}"></script>
+    <script src="{% static 'website/assets/js/countdown.js' %}"></script>
+    <script src="{% static 'website/assets/js/ajax-form.js' %}"></script>
+    <script src="{% static 'website/assets/js/meanmenu.js' %}"></script>
+    <script src="{% static 'website/assets/js/jquery.knob.js' %}"></script>
+    <script src="{% static 'website/assets/js/main.js' %}"></script>
+
+
+    {% block js %}
+    {% endblock %}
+
+
+</body>
+
+</html>

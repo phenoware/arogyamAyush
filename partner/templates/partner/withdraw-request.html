@@ -1,0 +1,157 @@
+{% extends 'partner/layout.html' %}
+{% load static %}
+
+{% block title %} Withdraw Request {% endblock %}
+
+{% block body %}
+
+
+{% if messages %}
+{% for i in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <b>Message : </b> {{i}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Withdraw Request</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item active">Withdraw Request</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Recent Withdraw Request <span>&nbsp; <a href="#" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" class="btn btn-warning btn-sm"><i class="bx bx-plus font-size-7"></i> Create New</a></span></h4>
+                
+                <div class="table-responsive">
+                    <table class="table align-middle table-nowrap mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                
+                                <th class="align-middle">Request Id</th>
+                                <th class="align-middle">Request Date</th>
+                                <th class="align-middle">Request Amount</th>
+                                <th class="align-middle">Wallet Balance</th>
+                                <th class="align-middle">Request Status</th>
+                                <th class="align-middle">Payment Method</th>
+                                <th class="align-middle">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in withdrawRequest %}
+                            {% if i.status == 'approved'%}
+                            {% else %}
+                            <tr>
+                               <td><a href="javascript: void(0);" class="text-body fw-bold">0000{{i.id}}</a> </td>
+                                <td>
+                                    {{i.requestDate}}
+                                </td>
+                                <td>
+                                    &#8377; {{i.requestAmount}}
+                                </td>
+                                <td>
+                                    &#8377; {{i.dealer.walletBalance}}
+                                </td>
+                                <td>
+                                    <span class="badge badge-pill badge-soft-danger font-size-11">{{i.status}}</span>
+                                </td>
+                                <td>
+                                    <i class="fab fa-cc-mastercard me-1"></i> Online
+                                </td>
+                                <td>
+                                    <ul class="list-inline font-size-20 contact-links mb-0">
+                                        <li class="list-inline-item ">
+                                            <a href="javascript: void(0);" title="Profile"
+                                                onclick="deleteRequest('{{i.id}}')"><i class="bx bx-trash"></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end table-responsive -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+
+<!-- With Draw Request Modal -->
+<div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create New Withdraw Request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <form action="/partner/create-withdraw-request/" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="formrow-firstname-input" class="form-label">Withdraw Amount : <small class="text-danger">(Withdraw amount must be less than wallet balance)</small></label>
+                            <input type="number" class="form-control" id="formrow-firstname-input" placeholder="Enter withdraw amount" name="amount" required>
+                            <small class="text-success">Your Wallet Balance is : &#8377; {{member.walletBalance}}</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formrow-firstname-input" class="form-label">Remark </label>
+                            <textarea name="remark" class="form-control" id="" cols="30" rows="4"></textarea>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="btn btn-primary w-md">Submit</button>
+                            <button type="reset" class="btn btn-warning w-md">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+{% endblock %}
+{% block js %}
+<script>
+    function deleteRequest(id) {
+        let text = "Do you really want to delete request : 000"+ id ;
+        if (confirm(text) == true) {
+            location.replace('/partner/delete-request/' + id)
+        }
+    }
+
+    function checkboxClick(id){
+        
+        let text = "Are you sure to approve request : 000"+ id+ '?' ;
+        if (confirm(text) == true) {
+            location.replace('/dashboard/approve-request/' + id)
+        }
+        else{
+            let checkBox = document.getElementById('check'+id);
+            checkBox.checked = false;
+        }
+    }
+</script>
+{% endblock %}

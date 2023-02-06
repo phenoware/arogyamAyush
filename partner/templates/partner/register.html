@@ -1,0 +1,164 @@
+
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+        
+        <meta charset="utf-8" />
+        <title>New Member Registration | Arogyam Ayush </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'partner/assets/images/favicon.ico' %}">
+
+        <!-- Bootstrap Css -->
+        <link href="{% static 'partner/assets/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="{% static 'partner/assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{% static 'partner/assets/css/app.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
+        
+
+        <link href="{% static 'partner/assets/libs/select2/css/select2.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'partner/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'partner/assets/libs/spectrum-colorpicker2/spectrum.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'partner/assets/libs/bootstrap-timepicker/css/bootstrap-timepicker.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'partner/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css' %}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="{% static 'partner/assets/libs/%40chenfengyuan/datepicker/datepicker.min.css' %}">
+
+    </head>
+
+    <body>
+        
+        <div class="account-pages my-5 pt-sm-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        <div class="card overflow-hidden">
+                            <div class="bg-primary bg-soft">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <div class="text-primary p-4">
+                                            <h5 class="text-primary">Arogyam Ayush - Member Registration</h5>
+                                            <p>Create your new member account.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-5 align-self-end">
+                                        <img src="{% static 'partner/assets/images/profile-img.png' %}" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0"> 
+                                <div>
+                                    <a href="#">
+                                        <div class="avatar-md profile-user-wid mb-4">
+                                            <span class="avatar-title rounded-circle bg-light">
+                                                <img src="{% static 'partner/assets/images/logo.svg' %}" alt="" class="rounded-circle" height="34">
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                {% if messages %}
+                                {% for i in messages %}
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    {{i}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                <div class="p-2">
+                                    <form class="needs-validation"  action="/partner/member-register/" method="post">
+                                        {% csrf_token %}
+                                        <div class="mb-3">
+                                            <label for="username" class="form-label">Full Name <span class="text-danger"> *</span></label>
+                                            <input type="text" class="form-control" id="username" placeholder="Enter full name" name="name" required>
+                                            
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="useremail" class="form-label">Email <span class="text-danger"> *</span></label>
+                                            <input type="email" class="form-control" id="useremail" placeholder="Enter email" name="email" required>  
+                                                  
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="phone" class="form-label">Phone Number <span class="text-danger"> *</span></label>
+                                            <input type="tel" class="form-control" id="phone" placeholder="Enter phone number" name="phone" required>
+                                              
+                                        </div>
+                                        
+                
+                                        <div class="mb-3">
+                                            <label for="userpassword" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="userpassword" placeholder="Enter password" name="password" required>
+                                                   
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="sponsored" class="form-label">Sponsored Id <span class="text-danger"> *</span></label>
+                                            <input type="tel" class="form-control" id="sponsored" placeholder="Enter sponsored id" name="sponsoredId" required>
+                                              
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Select Product / Package</label>
+                                            <select class="form-control select2" name="productId">
+                                                {% for i in products %}
+                                                <option value="{{i.id}}">&#8377; {{i.price}} - {{i.name}}</option>
+                                                {% endfor %}
+                                            </select>
+                                              
+                                        </div>
+                                        <div class="mt-4 d-grid">
+                                            <button class="btn btn-primary waves-effect waves-light" type="submit">Register</button>
+                                        </div>
+
+                                        
+                                        <div class="mt-4 text-center">
+                                            <p class="mb-0">By registering you agree to the Arogyam Ayush's <a href="/term-of-services" target="_blank" class="text-primary">Terms of Use</a></p>
+                                        </div>
+                                    </form>
+                                </div>
+            
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            
+                            <div>
+                                <p>Already have an account ? <a href="/partner/member-login" class="fw-medium text-primary"> Login</a> </p>
+                                <p>© <script>document.write(new Date().getFullYear())</script> Arogyam Ayush. Crafted with <i class="mdi mdi-heart text-danger"></i> by Phenoware Pvt. Ltd.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JAVASCRIPT -->
+        <script src="{% static 'partner/assets/libs/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'partner/assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'partner/assets/libs/metismenu/metisMenu.min.js' %}"></script>
+        <script src="{% static 'partner/assets/libs/simplebar/simplebar.min.js' %}"></script>
+        <script src="{% static 'partner/assets/libs/node-waves/waves.min.js' %}"></script>
+
+        <!-- validation init -->
+        <script src="{% static 'partner/assets/js/pages/validation.init.js' %}"></script>
+        
+        <!-- App js -->
+        <script src="{% static 'partner/assets/js/app.js' %}"></script>
+
+        <script src="{% static 'partner/assets/libs/select2/js/select2.min.js' %}"></script>
+        <script src="{% static 'partner/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+        <script src="{% static 'partner/assets/libs/spectrum-colorpicker2/spectrum.min.js' %}"></script>
+        <script src="{% static 'partner/assets/libs/bootstrap-timepicker/js/bootstrap-timepicker.min.js' %}"></script>
+        <script src="{% static 'partner/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js' %}"></script>
+        <script src="{% static 'partner/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js' %}"></script>
+        <script src="{% static 'partner/assets/libs/%40chenfengyuan/datepicker/datepicker.min.js' %}"></script>
+
+        <!-- form advanced init -->
+        <script src="{% static 'partner/assets/js/pages/form-advanced.init.js' %}"></script>
+
+
+    </body>
+
+<!-- Mirrored from themesbrand.com/skote/layouts/auth-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Mar 2022 05:48:48 GMT -->
+</html>

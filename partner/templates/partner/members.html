@@ -1,0 +1,89 @@
+{% extends 'partner/layout.html' %}
+{% load static %}
+
+{% block title %} Members {% endblock %}
+
+{% block body %}
+
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Members List <small>Sponsored ID: {{member.phone}}</small></h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item active">Members List</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="datatable" class="table align-middle table-nowrap table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col" style="width: 70px;">#ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Package</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in directMembers %}
+                            <tr>
+                                <td>
+                                    <div class="avatar-xs">
+                                        20220{{i.id}}
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5 class="font-size-14 mb-1"><a href="/partner/member-details/{{i.phone}}" target="_blank" class="text-dark">{{i.name}}</a></h5>
+                                    <p class="text-muted mb-0">{{i.date}}</p>
+                                </td>
+                                <td>{{i.phone}}</td>
+                                <td>
+                                    {{i.email}}
+                                </td>
+                                <td>
+                                    &#8377; {{i.product.price}}
+                                </td>
+                                <td>
+                                    <div>
+                                        <a href="javascript: void(0);" class="badge badge-soft-success font-size-11 m-1">&nbsp; Approved &nbsp;</a>
+                                       </div>
+                                </td>
+                                <td>
+                                    <ul class="list-inline font-size-20 contact-links mb-0">
+                                        <li class="list-inline-item px-2">
+                                            <a href="/partner/member-details/{{i.phone}}"  target="_blank" title="Message"><i class="bx bxs-user-detail"></i></a>
+                                        </li>
+                                        <li class="list-inline-item px-2">
+                                            <a href="/partner/member-details/{{i.phone}}"  target="_blank" title="Profile"><i class="bx bx-user-circle"></i></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div> <!-- container-fluid -->
+{% endblock %}

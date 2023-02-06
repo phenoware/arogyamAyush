@@ -1,0 +1,202 @@
+{% extends 'website/layout.html' %}
+{% load static %}
+
+{% block title %} Arogyam Ayush {% endblock %}
+
+{% block body %}
+<!-- main-area-start -->
+<main>
+
+    <!-- slider-area-start -->
+    <section class="">
+        <div class="mx-2">
+            <div class="tp-slide-item">
+                <div class="tp-slide-item__content">
+                    <h4 class="tp-slide-item__sub-title">Arogyam Ayush </h4>
+                    <h3 class="tp-slide-item__title mb-25">India's most
+                        <i>Trusted
+                            <img src="{% static 'website/assets/img/icon/title-shape-02.jpg' %}" alt="">
+                        </i>
+                        Ayurvedic Brand 
+                    </h3>
+                    <a class="tp-slide-item__slide-btn tp-btn" href="/shop">Shop Now <i
+                            class="fal fa-long-arrow-right"></i></a>
+                </div>
+                <div class="tp-slide-item__img">
+                    <img src="{% static 'website/assets/img/slider/banner2.png' %}" alt=""
+                        style="width: 100%; height: 250px;">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- slider-area-end -->
+
+
+    <!-- product-area-start -->
+    <section class="product-area pt-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="tpsection mb-40">
+                        <h4 class="tpsection__title">Our Popular <span> Products <img
+                                    src="{% static 'website/assets/img/icon/title-shape-01.jpg' %}" alt=""></span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
+                    <div
+                        class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1">
+                        {% for i in products %}
+                        <div class="col-6">
+                            <div class="tpproduct pb-15 mb-30">
+                                <div class="tpproduct__thumb p-relative">
+                                    <a href="/product-details/{{i.id}}/?redirectUrl={{request.get_full_path}}">
+                                        <img src="/media/{{i.image}}" alt="product-thumb" style="width: 180px; display: block; margin-left: auto; margin-right: auto;">
+                                       
+                                    </a>
+                                   
+                                </div>
+                                <div class="tpproduct__content">
+                                    <h3 class="tpproduct__title"><a href="/product-details/{{i.id}}/?redirectUrl={{request.get_full_path}}">{{i.name}}</a></h3>
+                                    <div class="tpproduct__priceinfo p-relative">
+                                        <div class="tpproduct__priceinfo-list">
+                                            <span>&#8377; {{i.price}} / {{i.unit}}</span>
+                                        </div>
+                                        <div class="tpproduct__cart">
+                                            <a href="/product-details/{{i.id}}/?redirectUrl={{request.get_full_path}}"><i class="fal fa-shopping-cart"></i>View Product</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- product-area-end -->
+
+
+    <!-- testimonial-area-start -->
+    <section class="testimonial-area pt-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="tpsection mb-40">
+                        <h4 class="tpsection__title">What our user says ?? <span> Reviews <img
+                                    src="{% static 'website/assets/img/icon/title-shape-01.jpg' %}" alt=""></span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-container testi-active">
+                <div class="swiper-wrapper" style="height: 400px;">
+                    {% for i in reviews %}
+                    <div class="swiper-slide " >
+                        <div class="tptesti text-center">
+                            <div class="tptesti__icon mb-25">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="22" height="16" viewBox="0 0 22 16">
+                                    <image id="testi-icon-01.svg" width="22" height="16"
+                                        xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAQCAYAAAAS7Y8mAAABcElEQVQ4jbXUPWtVQRDG8V9uJr4mSBRM4RvYJEEMiqLYhWAjCFamEVut/A52IZAyjYXmA4igRcBYCIqNFoKFkhSCVUBQQVAQTbyyYS9clj2HiDiwnGXmmf/szu6egYhQ2F5cx1VMYA8uYLUU9tkUbmIaY3hQUlPgHg5gGffxCesNwB2Yxy28xaP8XZNWnMe1iOhGxFJEjPX5m8ZQRKxExLeImC01vcnJDJ3bBrA3FiPia0SM1+K9Hj/HT1xs6WO/ncNLXMLjmiCBJ/EOZ/B6m+DUy0M42yTo4DI+/AV0Zz7kO22i1IdTucDttIMi/hvfsYTP2bcfwxl+uML8gTeRoUk4U4C7GMmFn/SBO7ngCRyp5JzG08gP4AWuVKofx/ucUO70Bl5Vcu7iYCcnDTa0aleDvy2WinY7LYn/ZP8dnA6jZr9acjca/Fus3q3Yh6MV0bEWcLpqtZzRrYeX/1zn8axhR1+KlW/iIxbyvLTdePgHAXhADHlkJs8AAAAASUVORK5CYII=" />
+                                </svg>
+                            </div>
+                            <div class="tptesti__content pb-5">
+                                <p style="font-size: medium;">“ {{i.review|slice:':100' }} ”
+                                </p>
+                            </div>
+                            <div class="tptesti__avata d-flex align-items-center justify-content-center">
+                                <!-- <div class="tptesti__avata-icon mr-20">
+                                    <img src="assets/img/testimonial/testi-avata-01.png" alt="avata">
+                                </div> -->
+                                <div class="tptesti__avata-content text-start">
+                                    <h5 class="tptesti__avata-content-title">{{i.name}}</h5>
+                                    <a href="/product-details/{{i.product.id}}/?redirectUrl={{request.get_full_path}}"><p>{{i.product.name}}</p></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- testimonial-area-end -->
+
+
+
+    <!-- shop-area-start -->
+    <!-- <section class="shop-area pt-50 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tpsectionarea text-center mb-35">
+                        <h5 class="tpsectionarea__subtitle">Follow On</h5>
+                        <h4 class="tpsectionarea__title"><i class="fab fa-youtube"></i> arogyam-ayush</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="shopareaitem">
+                <div class="shopslider-active swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="tpshopitem swiper-slide">
+                            <a class="popup-image"
+                                href="{% static 'website/assets/img/instagram/instagram-01.jpg' %}">
+                                <img src="{% static 'website/assets/img/instagram/instagram-01.jpg' %}"
+                                    alt="shop-thumb">
+                            </a>
+                        </div>
+                        <div class="tpshopitem swiper-slide">
+                            <a class="popup-image"
+                                href="{% static 'website/assets/img/instagram/instagram-02.jpg' %}">
+                                <img src="{% static 'website/assets/img/instagram/instagram-02.jpg' %}"
+                                    alt="shop-thumb">
+                            </a>
+                        </div>
+                        <div class="tpshopitem swiper-slide">
+                            <a class="popup-image"
+                                href="{% static 'website/assets/img/instagram/instagram-03.jpg' %}">
+                                <img src="{% static 'website/assets/img/instagram/instagram-03.jpg' %}"
+                                    alt="shop-thumb">
+                            </a>
+                        </div>
+                        <div class="tpshopitem swiper-slide">
+                            <a class="popup-image"
+                                href="{% static 'website/assets/img/instagram/instagram-04.jpg' %}">
+                                <img src="{% static 'website/assets/img/instagram/instagram-04.jpg' %}"
+                                    alt="shop-thumb">
+                            </a>
+                        </div>
+                        <div class="tpshopitem swiper-slide">
+                            <a class="popup-image"
+                                href="{% static 'website/assets/img/instagram/instagram-05.jpg' %}">
+                                <img src="{% static 'website/assets/img/instagram/instagram-05.jpg' %}"
+                                    alt="shop-thumb">
+                            </a>
+                        </div>
+                        <div class="tpshopitem swiper-slide">
+                            <a class="popup-image"
+                                href="{% static 'website/assets/img/instagram/instagram-06.jpg' %}">
+                                <img src="{% static 'website/assets/img/instagram/instagram-06.jpg' %}"
+                                    alt="shop-thumb">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- shop-area-end -->
+
+</main>
+{% endblock %}
+<!-- main-area-end -->
+{% block js %}
+{% endblock %}
+

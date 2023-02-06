@@ -1,0 +1,184 @@
+{% extends 'website/layout.html' %}
+{% load static %}
+
+{% block title %} {{product.name}} {% endblock %}
+
+{% block body %}
+<main>
+
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb__area pt-60 pb-60 tp-breadcrumb__bg"
+        data-background="{% static 'website/assets/img/banner/breadcrumb-01.jpg' %}">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-7 col-lg-12 col-md-12 col-12">
+                    <div class="tp-breadcrumb">
+                        <div class="tp-breadcrumb__link mb-10">
+                            <span class="breadcrumb-item-active"><a href="{{redirectUrl}}"><i
+                                        class="fa fa-arrow-left me-1"></i> Back</a></span>
+                            <span>{{product.name}}</span>
+                        </div>
+                        <h2 class="tp-breadcrumb__title">Checkout</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+
+
+    <!-- checkout-area start -->
+    <section class="checkout-area pb-50 pt-65 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="your-order mb-30 ">
+                        <h3>Your order</h3>
+                        <div class="your-order-table table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-total">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="cart_item">
+                                        <td class="product-name">
+                                            {{product.name}} <strong class="product-quantity"> × {{qnt}}</strong>
+                                        </td>
+                                        <td class="product-total">
+                                            <span class="amount">&#8377; {{amount}}</span>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                                <tfoot>
+
+                                    <tr class="shipping">
+                                        <th>Shipping</th>
+                                        <td>
+                                            <ul>
+
+                                                <li>
+                                                    <input type="radio" name="shipping" checked />
+                                                    <label>Free Shipping:</label>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr class="order-total">
+                                        <th>Order Total</th>
+                                        <td><strong><span class="amount">&#8377; {{amount}}</span></strong>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="payment-method">
+                            <div class="accordion" id="checkoutAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="checkoutOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#bankOne" aria-expanded="true" aria-controls="bankOne">
+                                            Payment Option
+                                        </button>
+                                    </h2>
+                                    <div id="bankOne" class="accordion-collapse collapse show"
+                                        aria-labelledby="checkoutOne" data-bs-parent="#checkoutAccordion">
+                                        <div class="accordion-body">
+                                            You choose any payment option from Netbanking , UPI, Credit Card, Debit Card
+                                            , Paytm Wallet.
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="order-button-payment mt-20">
+                            <a href="{{redirectUrl}}" class="tp-btn tp-color-btn w-100 banner-animation text-center"><i class="fa fa-arrow-left me-1"></i> Back </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <form action="/paytmweb/" method="post">
+                        {% csrf_token %}
+                        <div class="checkbox-form">
+                            <h3>Address & Billing Details</h3>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Full Name <span class="required">*</span></label>
+                                        <input type="text" placeholder="" name="name" required/>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="checkout-form-list">
+                                        <label>Phone <span class="required">*</span></label>
+                                        <input type="text" placeholder="" maxlength="10" required name="phone" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="checkout-form-list">
+                                        <label>Email Address <span class="required">*</span></label>
+                                        <input type="email" placeholder=""  required name="email" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Address <span class="required">*</span></label>
+                                        <input type="text" placeholder="Street address" name="address" required/>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>City <span class="required">*</span></label>
+                                        <input type="text" placeholder="City name"  name="city" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="checkout-form-list">
+                                        <label>State <span class="required">*</span></label>
+                                        <input type="text" placeholder="" value="Maharashtra" name="state" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="checkout-form-list">
+                                        <label>Pincode <span class="required">*</span></label>
+                                        <input type="text" placeholder="Enter pincode" maxlength="6" required name="pincode"/>
+                                    </div>
+                                </div>
+
+                                <input type="text" name="product" value="{{product.id}}" id="" hidden>
+                                <input type="text" name="qnt" id="" value="{{qnt}}" hidden>
+
+                            </div>
+                            <div class="different-address">
+
+                                <div class="order-notes">
+                                    <div class="checkout-form-list">
+                                        <label>Order Notes</label>
+                                        <textarea id="checkout-mess" cols="30" rows="10" name="msg"
+                                            placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                    </div>
+                                </div>
+                                <div class="order-button-payment mt-20">
+                                    <button type="submit" class="tp-btn tp-color-btn w-100 banner-animation">Continue <i class="fa fa-arrow-right me-1"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- checkout-area end -->
+
+</main>
+<!-- main-area-end -->
+
+{% endblock %}

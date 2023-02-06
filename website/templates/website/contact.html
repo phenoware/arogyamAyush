@@ -1,0 +1,128 @@
+{% extends 'website/layout.html' %}
+{% load static %}
+
+{% block title %} Arogyam Ayush | Contact us {% endblock %}
+
+{% block body %}
+
+<!-- main-area-start -->
+<main>
+
+     <!-- breadcrumb-area -->
+     <section class="breadcrumb__area pt-60 pb-60 tp-breadcrumb__bg"
+     data-background="{% static 'website/assets/img/banner/breadcrumb-01.jpg' %}">
+     <div class="container">
+         <div class="row align-items-center">
+             <div class="col-xl-7 col-lg-12 col-md-12 col-12">
+                 <div class="tp-breadcrumb">
+                     <div class="tp-breadcrumb__link mb-10">
+                         <span class="breadcrumb-item-active"><a href="/"><i class="fa fa-arrow-left me-1"></i> Home
+                             </a></span>
+                         <span>Contact</span>
+                     </div>
+                     <h2 class="tp-breadcrumb__title">Get In Touch</h2>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </section>
+ <!-- breadcrumb-area-end -->
+
+        
+    <!-- contact-area-start -->
+    <section class="contact-area pt-80 pb-80">
+       <div class="container">
+          <div class="row">
+             <div class="col-lg-4 col-12">
+                <div class="tpcontact__right mb-40">
+                   <div class="tpcontact__shop mb-30">
+                      <h4 class="tpshop__title mb-25">Get In Touch</h4>
+                      <div class="tpshop__info">
+                         <ul>
+                            <li>
+                                <i class="fal fa-phone"></i>
+                                <a href="tel:917304022648">+91 7304022648</a>
+                                <a href="tel:917304022649">+91 7304022649</a>
+                            </li>
+                            <li>
+                                <i class="fal fa-envelope"></i>
+                                
+                                <span>Email:</span>
+                                <a href="mailto:arogyamayushhelp@gmail.com">arogyamayushhelp@gmail.com</a>
+                                
+                             </li>
+                            <!-- <li><i class="fal fa-map-marker-alt"></i>
+                                <span>Address 1: </span>
+                                 <a href="#">Bankhandi,Chandigarh Dharamshala Road,Distt,near Hindu Temple,Kangra,Himachal Pradesh 177144</a></li> -->
+
+                            <li><i class="fal fa-map-marker-alt"></i> 
+                                <span>Address : </span>
+                                <a href="#">Arogyam Ayush Pvt Ltd. Bankhandi, Chandigarh Dharamshala Road, Distt, near Hindu Temple, Kangra, Himachal Pradesh - 177144</a></li>
+                           
+                         </ul>
+                      </div>
+                   </div>
+                   <div class="tpcontact__support">
+                      <a href="tel:917304022648">Get Support On Call <i class="fal fa-headphones"></i></a>
+                      <!-- <a target="_blank" href="https://www.google.com/maps/@36.963672,-119.2249843,7.17z">Get Direction <i class="fal fa-map-marker-alt"></i></a> -->
+                   </div>
+                </div>
+             </div>
+             <div class="col-lg-8 col-12">
+                <div class="tpcontact__form">
+                   <div class="tpcontact__info mb-35">
+                    {% if messages %}
+                    {% for i in messages %}  
+                    <h4 class="tpcontact__title" style="color: green;">We have received your message, We'll contact you shortly.</h4>
+                    {% endfor %}
+                    {% endif %}
+                      <h4 class="tpcontact__title pt-20">Make Custom Request</h4>
+                      <p>Must-have pieces selected every month want style Ideas and Treats?</p>
+                   </div>
+                   <form action="/send-message/" method="post">
+                    {% csrf_token %}
+                      <div class="row"> 
+                         <div class="col-lg-12">
+                            <div class="tpcontact__input mb-20">
+                               <input name="name" type="text" placeholder="Full name" required>
+                            </div>
+                         </div>
+                         <div class="col-lg-6">
+                            <div class="tpcontact__input mb-20">
+                               <input name="email" type="email" placeholder="Email address" required>
+                            </div>
+                         </div>
+                         <div class="col-lg-6">
+                            <div class="tpcontact__input mb-20">
+                               <input name="phone" type="text" placeholder="Phone number" maxlength="10" required>
+                            </div>
+                         </div>
+                         <div class="col-lg-12">
+                            <div class="tpcontact__input mb-20">
+                               <input name="subject" type="text" placeholder="Subject" required>
+                            </div>
+                         </div>
+                         <div class="col-lg-12">
+                            <div class="tpcontact__input mb-30">
+                               <textarea name="msg" placeholder="Enter message" required></textarea>
+                            </div>
+                         </div>                      
+                      </div>
+                      
+                      <div class="tpcontact__submit">
+                         <button class="tp-btn tp-color-btn tp-wish-cart" type="submit">Get A Quote <i class="fal fa-long-arrow-right"></i></button>
+                      </div>
+                   </form>
+                   <p class="ajax-response mt-30"></p>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+    <!-- contact-area-end -->
+
+   
+    </main>
+    <!-- main-area-end -->
+
+{% endblock %}

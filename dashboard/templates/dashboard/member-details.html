@@ -1,0 +1,472 @@
+{% extends 'dashboard/layout.html' %}
+{% load static %}
+{% block title %} {{member.user.first_name}} {{member.user.last_name}} {% endblock %}
+
+{% block body %}
+
+
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">20220{{member.id}} - {{member.user.first_name}} {{member.user.last_name}} </h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item active">Profile</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+
+<div class="row">
+    <div class="col-xl-4">
+        <div class="card overflow-hidden">
+            <div class="bg-primary bg-soft">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="text-primary p-3">
+                            <h5 class="text-primary">Welcome Back !</h5>
+                            <p>It will seem like simplified</p>
+                        </div>
+                    </div>
+                    <div class="col-5 align-self-end">
+                        <img src="{% static 'partner/assets/images/profile-img.png' %}" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body pt-0">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- <div class="avatar-md profile-user-wid mb-4">
+                            <img src="{% static 'partner/assets/images/users/avatar-2.jpg' %}" alt="" class="img-thumbnail rounded-circle">
+                        </div> -->
+                        <h5 class="font-size-15 text-truncate pt-2">Current Package</h5>
+                        <p class="text-muted mb-0 text-truncate">{{member.product.name}} : 	&#8377; {{member.product.price}}</p>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="pt-4">
+                           
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5 class="font-size-15">{{directMembersCount}} </h5>
+                                    <p class="text-muted mb-0">Direct Members</p>
+                                </div>
+                                <div class="col-6">
+                                    <h5 class="font-size-15">{{totalMember}}</h5>
+                                    <p class="text-muted mb-0">All Members</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end card -->
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Personal Information</h4>
+
+                <p class="text-muted mb-4">Sponsered ID : {{member.sponseredId}}</p>
+                <!-- <p class="text-muted mb-4">Sponsered ID : </p> -->
+                <div class="table-responsive">
+                    <table class="table table-nowrap mb-0">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Full Name :</th>
+                                <td>{{member.user.first_name}} {{member.user.last_name}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Mobile :</th>
+                                <td>{{member.phone}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">E-mail :</th>
+                                <td>{{member.user.email}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Last login :</th>
+                                <td>{{member.user.last_login}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Bank Name :</th>
+                                <td>{{member.bankName}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">IFSC Code :</th>
+                                <td>{{member.ifscCode}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">A/C Number :</th>
+                                <td>{{member.accountNumber}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- end card -->
+
+          
+        <!-- end card -->
+    </div>         
+    
+    <div class="col-xl-8">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mini-stats-wid">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <p class="text-muted fw-medium mb-2">Revenue</p>
+                                <h4 class="mb-0">&#x20B9; {{totalRevenue}}</h4>
+                            </div>
+
+                            <div class="flex-shrink-0 align-self-center">
+                                <div class="avatar-sm mini-stat-icon rounded-circle bg-primary">
+                                    <span class="avatar-title">
+                                        <i class="bx bx-rupee font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mini-stats-wid">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <p class="text-muted fw-medium mb-2">Paid Balance</p>
+                                <h4 class="mb-0">&#x20B9; {{member.paidBalance}}</h4>
+                            </div>
+
+                            <div class="flex-shrink-0 align-self-center">
+                                <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                    <span class="avatar-title">
+                                        <i class="bx bx-rupee font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mini-stats-wid">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <p class="text-muted fw-medium mb-2">Wallet Balance</p>
+                                <h4 class="mb-0">&#x20B9; {{member.walletBalance}}</h4>
+                            </div>
+
+                            <div class="flex-shrink-0 align-self-center">
+                                <div class="avatar-sm mini-stat-icon rounded-circle bg-primary">
+                                    <span class="avatar-title">
+                                        <i class="bx bxs-wallet-alt font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Level Earning</h4>
+                <div class="table-responsive">
+                    <table class="table align-middle table-nowrap mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="align-middle">Level</th>
+                                <th class="align-middle">Members</th>
+                                <th class="align-middle">Total</th>
+                                <th class="align-middle">Commision</th>
+                                <th class="align-middle">Earning</th>
+                                <th class="align-middle">Action</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% if level1 %}
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">#1</a> </td>
+                                <td>{{level1.directMembersCount}}</td>
+                                <td>
+                                    &#x20B9; {{level1.level1Total}} 
+                                </td>
+                                <td>
+                                    10 %
+                                </td>
+                                
+                                <td>
+                                    &#x20B9; {{level1.level1Earing}}
+                                </td>
+                                
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                        View Details
+                                    </button>
+                                </td>
+                                {% else %}
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">#1</a> </td>
+                                <td>0</td>
+                                <td>
+                                    &#x20B9; 0 
+                                </td>
+                                <td>
+                                    10 %
+                                </td>
+                                
+                                <td>
+                                    &#x20B9; 0
+                                </td>
+                                
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                        View Details
+                                    </button>
+                                </td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                {% if level2 %}
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">#2</a> </td>
+                                <td>{{level2.level2DealerDirectMembersCount}}</td>
+                                <td>
+                                    &#x20B9; {{level2.level12Total}} 
+                                </td>
+                                <td>
+                                    5 %
+                                </td>
+                                
+                                <td>
+                                    &#x20B9; {{level2.level2Earing}}
+                                </td>
+                                
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                        View Details
+                                    </button>
+                                </td>
+                                {% else %}
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">#2</a> </td>
+                                <td>0</td>
+                                <td>
+                                    &#x20B9; 0 
+                                </td>
+                                <td>
+                                    5 %
+                                </td>
+                                
+                                <td>
+                                    &#x20B9; 0
+                                </td>
+                                
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                        View Details
+                                    </button>
+                                </td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                {% if level3 %}
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">#3</a> </td>
+                                <td>{{level3.level3DealerDirectMembersCount}}</td>
+                                <td>
+                                    &#x20B9; {{level3.level3Total}} 
+                                </td>
+                                <td>
+                                    2 %
+                                </td>
+                                
+                                <td>
+                                    &#x20B9; {{level3.level3Earing}}
+                                </td>
+                                
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                        View Details
+                                    </button>
+                                </td>
+                                {% else %}
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">#3</a> </td>
+                                <td>0</td>
+                                <td>
+                                    &#x20B9; 0 
+                                </td>
+                                <td>
+                                    2 %
+                                </td>
+                                
+                                <td>
+                                    &#x20B9; 0
+                                </td>
+                                
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                        View Details
+                                    </button>
+                                </td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                {% if level4 %}
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">#4</a> </td>
+                                <td>{{level4.level4DealerDirectMembersCount}}</td>
+                                <td>
+                                    &#x20B9; {{level4.level4Total}} 
+                                </td>
+                                <td>
+                                    1 %
+                                </td>
+                                
+                                <td>
+                                    &#x20B9; {{level4.level4Earing}}
+                                </td>
+                                
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                        View Details
+                                    </button>
+                                </td>
+                                {% else %}
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">#4</a> </td>
+                                <td>0</td>
+                                <td>
+                                    &#x20B9; 0 
+                                </td>
+                                <td>
+                                    1 %
+                                </td>
+                                
+                                <td>
+                                    &#x20B9; 0
+                                </td>
+                                
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                        View Details
+                                    </button>
+                                </td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                {% if level5 %}
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">#5</a> </td>
+                                <td>{{level5.level5DealerDirectMembersCount}}</td>
+                                <td>
+                                    &#x20B9; {{level5.level5Total}} 
+                                </td>
+                                <td>
+                                    0.5 %
+                                </td>
+                                
+                                <td>
+                                    &#x20B9; {{level5.level5Earing}}
+                                </td>
+                                
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                        View Details
+                                    </button>
+                                </td>
+                                {% else %}
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">#5</a> </td>
+                                <td>0</td>
+                                <td>
+                                    &#x20B9; 0 
+                                </td>
+                                <td>
+                                    0.5 %
+                                </td>
+                                
+                                <td>
+                                    &#x20B9; 0
+                                </td>
+                                
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                        View Details
+                                    </button>
+                                </td>
+                                {% endif %}
+                            </tr>
+
+                            
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end table-responsive -->
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Direct Members</h4>
+                <div class="table-responsive">
+                    <table class="table table-nowrap table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                               
+                                <th class="align-middle">Member Id</th>
+                                <th class="align-middle">Name</th>
+                                <th class="align-middle">Joining Date</th>
+                                <th class="align-middle">Phone</th>
+                                <th class="align-middle">Package</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in directMembers %}
+                            <tr>
+                                <td><a href="/dashboard/member-details-by-phone/{{i.phone}}" target="_blank" class="text-body fw-bold">20220{{i.id}}</a> </td>
+                                <td><a href="/dashboard/member-details-by-phone/{{i.phone}}" target="_blank" class="text-body fw-bold">{{i.name}}</a></td>
+                                <td>
+                                    {{i.date}}
+                                </td>
+                                <td>
+                                    {{i.phone}}
+                                </td>
+                                <td>
+                                    {{i.product.price}}
+                                </td>
+                                
+                            </tr>
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- end row -->
+
+</div> <!-- container-fluid -->
+{% endblock %}
